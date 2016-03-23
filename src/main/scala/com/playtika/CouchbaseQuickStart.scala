@@ -18,12 +18,13 @@ object CouchbaseQuickStart {
     // Generate The Context
     val sc = new SparkContext(cfg)
 
+    //read a document by its id and upsert it
     sc
       .couchbaseGet[JsonDocument](Seq("airline_10123", "airline_10748"))
       .map(oldDoc => {
-        val id = "my_" + oldDoc.id()
-        val content = JsonObject.create().put("name", oldDoc.content().getString("name"))
-        JsonDocument.create(id, content)
+        val name = "my_" + oldDoc.content().get("name")
+        val content = oldDoc.content().put("name", name)
+        JsonDocument.create(oldDoc.id(), content)
       })
       .saveToCouchbase()
   }
