@@ -5,6 +5,7 @@ import com.couchbase.client.java.document.json.JsonObject
 import com.couchbase.spark._
 import org.apache.spark._
 import org.apache.spark.sql.SQLContext
+import org.apache.spark.sql.functions._
 import com.couchbase.spark.sql._
 
 /**
@@ -21,11 +22,17 @@ object DevicesCouchbase {
     val sc = new SparkContext(cfg)
     val sqlContext = new SQLContext(sc)
     // read file
-    val logFile = "appsflyer.txt" // Should be some file on your system
+    val logFile = "sessions.txt" // Should be some file on your system
     val logData = sc.textFile(logFile, 2).cache()
     val df = sqlContext.read.json(logData)
     df.registerTempTable("devices")
-    df.write.couchbase(Map("idField" -> "advertising_id"))
+    //Define a udf to concatenate two passed in string values
+    val getConcatenated = udf( (first: String, second: String) => { first + " " + second } )
+
+    //use withColumn method to add a new column called deviceKey
+    val df1 = df.withColumn("deviceKey", getConcatenated(df("udid"), df("platformType"))).select("*")
+
+    df1.write.couchbase(Map("idField" -> "deviceKey"))
 
   }
 }
