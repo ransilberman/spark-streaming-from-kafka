@@ -1,12 +1,9 @@
 package com.playtika
 
-import com.couchbase.client.java.document.JsonDocument
-import com.couchbase.client.java.document.json.JsonObject
-import com.couchbase.spark._
+import com.couchbase.spark.sql._
 import org.apache.spark._
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.sql.functions._
-import com.couchbase.spark.sql._
 
 /**
   * Created by rans on 23/03/16.
