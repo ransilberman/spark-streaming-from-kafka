@@ -30,7 +30,7 @@
 
     <profiles>
         <profile>
-            <id>production</id>
+            <id>Prod (Spark provided)</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -58,7 +58,7 @@
             </dependencyManagement>
         </profile>
         <profile>
-            <id>dev</id>
+            <id>Dev (Spark included)</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
