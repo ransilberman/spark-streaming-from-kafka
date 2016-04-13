@@ -1,4 +1,4 @@
-package com.playtika
+package com.myspark
 
 import com.couchbase.spark.sql._
 import org.apache.spark._

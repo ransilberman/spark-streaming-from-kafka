@@ -1,4 +1,4 @@
-package com.playtika
+package com.myspark
 
 import com.couchbase.client.java.document.JsonDocument
 import com.couchbase.client.java.document.json.JsonObject

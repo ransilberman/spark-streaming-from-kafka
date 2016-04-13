@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.playtika;
+package com.myspark;
 
 import com.google.common.collect.Lists;
 import org.apache.ivy.util.MessageLoggerHelper;

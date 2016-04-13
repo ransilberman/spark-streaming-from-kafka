@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.playtika
+package com.myspark
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.Logging

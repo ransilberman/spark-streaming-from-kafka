@@ -16,7 +16,7 @@
  */
 
 // scalastyle:off println
-package com.playtika
+package com.myspark
 
 import java.util.HashMap
 

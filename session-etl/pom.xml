@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.playtika</groupId>
+        <groupId>com.myspark</groupId>
         <artifactId>spark-jobs</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.playtika</groupId>
+    <groupId>com.myspark</groupId>
     <artifactId>session-etl</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
