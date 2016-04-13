@@ -21,12 +21,7 @@
         <module>session-etl</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <id>playtika-repo</id>
-            <url>http://artifactory.corp/artifactory/libs-release/</url>
-        </repository>
-    </repositories>
+
 
     <profiles>
         <profile>

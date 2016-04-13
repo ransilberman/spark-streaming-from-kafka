@@ -1,4 +1,4 @@
-package main.java.com.playtika;
+package com.myspark;
 
 import org.apache.log4j.*;
 import org.slf4j.LoggerFactory;
