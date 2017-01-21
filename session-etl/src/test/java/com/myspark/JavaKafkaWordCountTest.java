@@ -90,7 +90,7 @@ public class JavaKafkaWordCountTest {
         t.start();
 
         for (int i=0; i<1000; i++){
-            producer.send(new ProducerRecord<>(TOPIC, 0, 1, ("message-" + Integer.toString(i)).getBytes(Charset.forName("UTF-8"))));
+            producer.send(new ProducerRecord<>(TOPIC, 0, 1, ("There are some words here to count -" + Integer.toString(i)).getBytes(Charset.forName("UTF-8"))));
             Thread.sleep(10);
         }
         System.out.println("End Test");
