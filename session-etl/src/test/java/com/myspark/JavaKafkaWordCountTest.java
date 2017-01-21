@@ -2,12 +2,9 @@ package com.myspark;
 
 import kafka.server.KafkaConfig;
 import kafka.server.KafkaServerStartable;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.*;
 import org.apache.zookeeper.server.ZooKeeperServerMain;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import java.io.File;
 import java.io.IOException;
