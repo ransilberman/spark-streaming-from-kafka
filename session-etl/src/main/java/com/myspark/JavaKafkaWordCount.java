@@ -64,7 +64,7 @@ public final class JavaKafkaWordCount {
 
     LoggerTools.setStreamingLogLevels();
     SparkConf sparkConf = new SparkConf().setAppName("JavaKafkaWordCount");
-//    sparkConf.setMaster("local[*]"); set master server
+    sparkConf.setMaster("local[2]"); //set master server
       sparkConf.set("com.couchbase.bucket.travel-sample", "");
     // Create the context with 2 seconds batch size
     JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000));
