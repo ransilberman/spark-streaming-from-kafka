@@ -18,7 +18,6 @@
 package com.myspark;
 
 import com.google.common.collect.Lists;
-import org.apache.ivy.util.MessageLoggerHelper;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
@@ -65,7 +64,7 @@ public final class JavaKafkaWordCount {
     LoggerTools.setStreamingLogLevels();
     SparkConf sparkConf = new SparkConf().setAppName("JavaKafkaWordCount");
     sparkConf.setMaster("local[2]"); //set master server
-      sparkConf.set("com.couchbase.bucket.travel-sample", "");
+    sparkConf.set("com.couchbase.bucket.travel-sample", "");
     // Create the context with 2 seconds batch size
     JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000));
 
@@ -94,17 +93,17 @@ public final class JavaKafkaWordCount {
     });
 
     JavaPairDStream<String, Integer> wordCounts = words.mapToPair(
-      new PairFunction<String, String, Integer>() {
-        @Override
-        public Tuple2<String, Integer> call(String s) {
-          return new Tuple2<String, Integer>(s, 1);
-        }
-      }).reduceByKey(new Function2<Integer, Integer, Integer>() {
-        @Override
-        public Integer call(Integer i1, Integer i2) {
-          return i1 + i2;
-        }
-      });
+            new PairFunction<String, String, Integer>() {
+              @Override
+              public Tuple2<String, Integer> call(String s) {
+                return new Tuple2<String, Integer>(s, 1);
+              }
+            }).reduceByKey(new Function2<Integer, Integer, Integer>() {
+      @Override
+      public Integer call(Integer i1, Integer i2) {
+        return i1 + i2;
+      }
+    });
 
     wordCounts.print();
     jssc.start();
