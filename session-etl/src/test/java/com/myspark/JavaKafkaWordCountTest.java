@@ -19,10 +19,10 @@ public class JavaKafkaWordCountTest {
     private static final String TOPIC = "topic-1";
     private static final String BROKERHOST = "127.0.0.1";
     private static final String BROKERPORT = "9092";
+    private static final String ZKPORT = "2181";
 
     private String nodeId = "0";
-    private String port = "9092";
-    private String zkConnect = "localhost:2181";
+    private String zkConnect = "localhost:" + ZKPORT;
     private KafkaServerStartable server;
     KafkaProducer<Integer, byte[]> producer;
 
@@ -51,7 +51,7 @@ public class JavaKafkaWordCountTest {
         new Thread() {
             @Override
             public void run() {
-                ZooKeeperServerMain.main(new String [] {"2181",  zkTmpDir.getAbsolutePath()});
+                ZooKeeperServerMain.main(new String [] {ZKPORT,  zkTmpDir.getAbsolutePath()});
             }
         }.start();
 
@@ -64,7 +64,7 @@ public class JavaKafkaWordCountTest {
     private void startKafka() {
         Properties props = new Properties();
         props.put("broker.id", nodeId);
-        props.put("port", port);
+        props.put("port", BROKERPORT);
         props.put("zookeeper.connect", zkConnect);
         props.put("host.name", "127.0.0.1");
         KafkaConfig conf = new KafkaConfig(props);
